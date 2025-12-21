@@ -96,14 +96,14 @@ export default function OrderModal({
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('handleSubmit called'); // Debug log at the start
-    
+
     setError(null);
     setFieldErrors({});
     setIsSubmitting(true);
 
     try {
       console.log('Starting validation'); // Debug log
-      
+
       // Basic field values
       const { name, number, address } = formData;
       const trimmedName = name.trim();
@@ -122,10 +122,10 @@ export default function OrderModal({
         newErrors.address = 'Please enter your address in English only.';
       }
 
-      // Address must contain at least 4 words
-      const addressWordCount = trimmedAddress.split(/\s+/).filter(Boolean).length;
-      if (addressWordCount < 4) {
-        newErrors.address = 'Please enter a complete address with at least 4 words.';
+      // Address must contain at least 14 chaarcter
+      const addressWordCount = trimmedAddress.length;
+      if (addressWordCount < 14) {
+        newErrors.address = 'Please enter a complete address with at least 14 character.';
       }
 
       // Mobile number: 10 to 13 digits (digits only)
@@ -227,7 +227,7 @@ export default function OrderModal({
       console.log('Order created successfully:', data); // Debug log
 
       setSuccess(true);
-      
+
       // totalAmount already calculated above, use it for Facebook Pixel
       trackFacebookEvent('Purchase', {
         content_name: productName,
