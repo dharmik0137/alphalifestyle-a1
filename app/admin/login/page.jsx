@@ -21,7 +21,7 @@ export default function AdminLogin() {
 
   // Static credentials
   const ADMIN_EMAIL = 'admin@ecommerce.com';
-  const ADMIN_PASSWORD = 'admin123';
+  const ADMIN_PASSWORD = 'Meet@15822';
 
   const handleSubmit = (e) => {
     e.preventDefault();
