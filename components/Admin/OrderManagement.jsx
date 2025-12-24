@@ -211,20 +211,29 @@ export default function OrderManagement() {
     const yesterday = new Date(today);
     yesterday.setDate(yesterday.getDate() - 1);
 
-    const todayCount = orders.filter((order) => {
-      const orderDate = new Date(order.createdAt);
-      return orderDate >= today && orderDate < tomorrow;
-    }).length;
+    let todayCount = 0;
+    let yesterdayCount = 0;
 
-    const yesterdayCount = orders.filter((order) => {
+    orders.forEach((order) => {
       const orderDate = new Date(order.createdAt);
-      return orderDate >= yesterday && orderDate < today;
-    }).length;
 
-    return { todayCount, yesterdayCount };
+      if (orderDate >= today && orderDate < tomorrow) {
+        todayCount++;
+      } else if (orderDate >= yesterday && orderDate < today) {
+        yesterdayCount++;
+      }
+    });
+
+    const allOrdersCount = orders.length;
+
+    return {
+      todayCount,
+      yesterdayCount,
+      allOrdersCount,
+    };
   };
 
-  const { todayCount, yesterdayCount } = getTodayAndYesterdayCounts();
+  const { todayCount, yesterdayCount, allOrdersCount } = getTodayAndYesterdayCounts();
 
   if (isLoading) {
     return <div className="text-center py-8">Loading orders...</div>;
@@ -260,6 +269,28 @@ export default function OrderManagement() {
               </div>
               <div className="bg-green-200 rounded-full p-2 sm:p-3">
                 <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-green-700" />
+              </div>
+            </div>
+          </div>
+          <div className="bg-gradient-to-br from-red-50 to-red-100 p-3 sm:p-4 rounded-lg border border-red-200">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-xs sm:text-sm text-gray-600 mb-1">Total Orders</p>
+                <p className="text-xl sm:text-2xl font-bold text-red-700">{allOrdersCount}</p>
+              </div>
+              <div className="bg-red-200 rounded-full p-2 sm:p-3">
+                <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-red-700" />
+              </div>
+            </div>
+          </div>
+          <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-3 sm:p-4 rounded-lg border border-purple-200">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-xs sm:text-sm text-gray-600 mb-1">Filtered Orders</p>
+                <p className="text-xl sm:text-2xl font-bold text-purple-700">{filteredOrders.length}</p>
+              </div>
+              <div className="bg-purple-200 rounded-full p-2 sm:p-3">
+                <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-purple-700" />
               </div>
             </div>
           </div>
