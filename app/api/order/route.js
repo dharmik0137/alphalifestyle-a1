@@ -127,6 +127,18 @@ export async function POST(request) {
     const db = await getDatabase();
     const collection = db.collection('orders');
 
+    // Check if mobile number already exists in database
+    const existingOrder = await collection.findOne({ number: body.number });
+    if (existingOrder) {
+      return NextResponse.json(
+        { 
+          error: 'User has create order with this mobile number',
+          message: 'User has create order with this mobile number'
+        },
+        { status: 400 }
+      );
+    }
+
     // Generate sequential numeric orderId starting from 1000
     const counters = db.collection('counters');
 
