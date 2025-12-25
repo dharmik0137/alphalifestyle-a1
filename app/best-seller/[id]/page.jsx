@@ -55,20 +55,6 @@ const ProductDetails = () => {
         setQuantity(quantity + 1);
     };
 
-    const handleWishlist = async () => {
-        setIsWishlistLoading(true);
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 500));
-        setIsWishlistLoading(false);
-    };
-
-    const handleShare = async () => {
-        setIsShareLoading(true);
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 500));
-        setIsShareLoading(false);
-    };
-
     // Set default selected size (28 if available, otherwise first size)
     useEffect(() => {
         if (!selectedSize && availableSizes.length > 0) {
@@ -96,7 +82,13 @@ const ProductDetails = () => {
         };
     }, []);
 
+    const deliveryDate = () => {
+        const d = new Date();
+        const e = new Date(d);
+        e.setDate(d.getDate() + 6);
 
+        return `${d.toLocaleString("en-US", { month: "short", day: "numeric" })} – ${e.toLocaleString("en-US", { month: "short", day: "numeric" })}`;
+    };
     return (
         <div className="h-full bg-white">
             <OrderModal
@@ -129,7 +121,7 @@ const ProductDetails = () => {
                                             <img
                                                 src={img.src}
                                                 alt={`${product.title} - Image ${index + 1}`}
-                                                className="w-full max-h-130 object-contain bg-white"
+                                                className="w-full max-h-[520px] object-contain bg-white"
                                             />
                                         </SwiperSlide>
                                     ))}
@@ -241,35 +233,9 @@ const ProductDetails = () => {
                                 🔒 Order Now – Cash on Delivery
                             </button>
 
-                            {/* Actions */}
-                            <div className="flex items-center gap-6 text-sm text-gray-700">
-                                <button
-                                    onClick={handleWishlist}
-                                    disabled={isWishlistLoading}
-                                    className="flex items-center gap-1 disabled:opacity-50 disabled:cursor-not-allowed"
-                                >
-                                    {isWishlistLoading ? (
-                                        <Loader2 className="w-4 h-4 animate-spin" />
-                                    ) : (
-                                        <Heart className="w-4 h-4" />
-                                    )} Wishlist
-                                </button>
-                                <button
-                                    onClick={handleShare}
-                                    disabled={isShareLoading}
-                                    className="flex items-center gap-1 disabled:opacity-50 disabled:cursor-not-allowed"
-                                >
-                                    {isShareLoading ? (
-                                        <Loader2 className="w-4 h-4 animate-spin" />
-                                    ) : (
-                                        <Share2 className="w-4 h-4" />
-                                    )} Share
-                                </button>
-                            </div>
-
                             {/* Delivery */}
                             <p className="mt-4 text-sm text-gray-600">
-                                Estimated Delivery: <strong>Dec 18 – Dec 24</strong>
+                                Estimated Delivery: <strong>{deliveryDate()}</strong>
                             </p>
                         </div>
                     </div>
@@ -304,7 +270,7 @@ const ProductDetails = () => {
                                             <img
                                                 src={img.src}
                                                 alt={`${product.title} - Photo ${index + 1}`}
-                                                className="w-full h-75 sm:h-87.5 object-cover group-hover:scale-105 transition duration-300"
+                                                className="w-full h-[300px] sm:h-[350px] object-cover group-hover:scale-105 transition duration-300"
                                             />
                                         </div>
                                     ))}

@@ -11,7 +11,7 @@ export const Footer = () => {
     const handleSubscribe = async (e) => {
         e.preventDefault();
         if (!email) return;
-        
+
         setIsSubscribing(true);
         // Simulate API call
         await new Promise(resolve => setTimeout(resolve, 1000));
@@ -24,12 +24,11 @@ export const Footer = () => {
             <div className="max-w-7xl mx-auto px-4 py-12">
                 {/* Top Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
-                    {/* Brand */}
                     <div>
                         <img
-                            src="/logo.png" // replace with your logo path
+                            src="/logo.jpeg"
                             alt="Alpha Fulfill"
-                            className="h-12 mb-4"
+                            className="h-35 w-35 mb-4"
                         />
                         <p className="text-sm text-white/80 leading-relaxed max-w-xs">
                             Aveoxa is where innovation meets everyday style. Designed for the
@@ -48,7 +47,7 @@ export const Footer = () => {
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/best-sellers" className="hover:text-white">
+                                <Link href="/best-seller" className="hover:text-white">
                                     Best Sellers
                                 </Link>
                             </li>
@@ -59,11 +58,6 @@ export const Footer = () => {
                     <div>
                         <h4 className="font-semibold mb-4">POLICIES</h4>
                         <ul className="space-y-2 text-sm text-white/80">
-                            <li>
-                                <Link href="/search" className="hover:text-white">
-                                    Search
-                                </Link>
-                            </li>
                             <li>
                                 <Link href="/return-refund" className="hover:text-white">
                                     Return & Refund Policy
@@ -101,9 +95,9 @@ export const Footer = () => {
                                 placeholder="Enter your email"
                                 required
                                 disabled={isSubscribing}
-                                className="w-full px-3 py-2 text-sm text-black rounded mb-3 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
+                                className="w-full px-3 py-2 text-sm bg-white text-black rounded mb-3 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
                             />
-                            <button 
+                            <button
                                 type="submit"
                                 disabled={isSubscribing || !email}
                                 className="w-full bg-white text-black text-sm py-2 rounded hover:bg-gray-200 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"

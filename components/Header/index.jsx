@@ -59,9 +59,6 @@ export const Navbar = () => {
 
                         {/* Mobile Actions */}
                         <div className="flex md:hidden items-center gap-2">
-                            <div className="relative p-2 rounded-full hover:bg-gray-100 cursor-pointer">
-                                <ShoppingBag size={18} />
-                            </div>
 
                             <button
                                 onClick={() => setOpen(true)}
