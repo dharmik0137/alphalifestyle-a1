@@ -30,9 +30,9 @@ export const Navbar = () => {
                     <div className="flex items-center justify-between h-14 sm:h-16 md:h-20">
                         <Link href="/" className="flex items-center gap-3">
                             <img
-                                src="/logo.png"
+                                src="/aikvis.jpeg"
                                 alt="Alpha Fulfill logo"
-                                className="h-50 w-auto object-contain"
+                                className="h-20 w-auto object-contain"
                             />
                         </Link>
                         <nav className="hidden md:flex items-center gap-6 lg:gap-8">

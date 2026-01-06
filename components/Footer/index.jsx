@@ -26,9 +26,9 @@ export const Footer = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
                     <div>
                         <img
-                            src="/logo.jpeg"
+                            src="/aikvis.jpeg"
                             alt="Alpha Fulfill"
-                            className="h-35 w-35 mb-4"
+                            className="h-35 w-50 mb-4"
                         />
                         <p className="text-sm text-white/80 leading-relaxed max-w-xs">
                             Aveoxa is where innovation meets everyday style. Designed for the

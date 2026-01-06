@@ -164,8 +164,7 @@ const ProductDetails = () => {
                                 <Eye className="w-4 h-4" />
                                 12 people are viewing this right now
                             </div>
-
-                            {(availableSizes.length > 0 && productName === "New Fashion Leather Beret") && (
+                            {(availableSizes.length > 0 && productName === "New Fashion Leather Beret (BUY 1 GET 1 FREE)") && (
                                 <div className="mb-6">
                                     {/* <p className="font-medium mb-2">SIZE</p> */}
                                     <div className="flex flex-wrap gap-2">
@@ -238,7 +237,7 @@ const ProductDetails = () => {
                                         num_items: quantity,
                                     });
                                 }}
-                                disabled={!selectedSize}
+                                disabled={productName === "New Fashion Leather Beret (BUY 1 GET 1 FREE)" && !selectedSize}
                                 className="w-full bg-black text-white py-3 font-medium mb-4 hover:bg-gray-800 transition disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
                             >
                                 🔒 Order Now – Cash on Delivery
@@ -282,7 +281,7 @@ const ProductDetails = () => {
                   px-4 py-3 sm:hidden">
                             <button
                                 onClick={() => setIsModalOpen(true)}
-                                disabled={!selectedSize}
+                                disabled={productName === "New Fashion Leather Beret (BUY 1 GET 1 FREE)" && !selectedSize}
                                 className="w-full bg-black text-white py-3 font-medium
                  hover:bg-gray-800 transition disabled:opacity-50
                  disabled:cursor-not-allowed text-sm"
