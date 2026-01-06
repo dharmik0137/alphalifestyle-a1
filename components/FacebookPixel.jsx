@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 
 export function FacebookPixel() {
   const pathname = usePathname();
-  const pixelId = '1169945847981913';
+  const pixelId = '1356114005800717';
 
 
   useEffect(() => {

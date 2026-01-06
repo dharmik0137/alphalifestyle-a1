@@ -165,9 +165,9 @@ const ProductDetails = () => {
                                 12 people are viewing this right now
                             </div>
 
-                            {availableSizes.length > 0 && (
+                            {(availableSizes.length > 0 && productName === "New Fashion Leather Beret") && (
                                 <div className="mb-6">
-                                    <p className="font-medium mb-2">SIZE</p>
+                                    {/* <p className="font-medium mb-2">SIZE</p> */}
                                     <div className="flex flex-wrap gap-2">
                                         {availableSizes.map((size) => {
                                             const variant = getVariantBySize(product, size);
@@ -191,6 +191,17 @@ const ProductDetails = () => {
                                             );
                                         })}
                                     </div>
+                                </div>
+                            )}
+                            {product.descriptionHtml && (
+                                <div className="display-block mb-8 max-w-5xl mx-auto">
+                                    {/* <h2 className="text-lg sm:text-xl font-semibold text-center mb-4 sm:mb-6">
+                                        Product Description
+                                    </h2> */}
+                                    <div
+                                        className="text-start text-lg text-gray-600 leading-relaxed"
+                                        dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
+                                    />
                                 </div>
                             )}
 
@@ -241,17 +252,6 @@ const ProductDetails = () => {
                     </div>
 
                     {/* Description */}
-                    {product.descriptionHtml && (
-                        <div className="mt-8 sm:mt-16 max-w-5xl mx-auto">
-                            <h2 className="text-lg sm:text-xl font-semibold text-center mb-4 sm:mb-6">
-                                Product Description
-                            </h2>
-                            <div
-                                className="text-center text-sm text-gray-600 leading-relaxed"
-                                dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
-                            />
-                        </div>
-                    )}
 
                     {/* Product Photos Gallery */}
                     {product.images && product.images.length > 0 && (
