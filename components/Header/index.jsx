@@ -28,12 +28,14 @@ export const Navbar = () => {
 
                 <div className="container mx-auto px-3 sm:px-4">
                     <div className="flex items-center justify-between h-14 sm:h-16 md:h-20">
-                        <Link href="/" className="flex items-center gap-3">
-                            <img
-                                src="/aikvis.jpeg"
-                                alt="Alpha Fulfill logo"
-                                className="h-20 w-auto object-contain"
-                            />
+                        <Link href="/" className="flex items-center">
+                            <div className="h-14 w-auto sm:h-10 sm:w-20 md:h-20 md:w-40">
+                                <img
+                                    src="/aikvis.jpeg"
+                                    alt="Alpha Fulfill logo"
+                                    className="h-full w-auto object-contain"
+                                />
+                            </div>
                         </Link>
                         <nav className="hidden md:flex items-center gap-6 lg:gap-8">
                             <Link href={"/"} className="text-sm font-medium text-black">Home</Link>
