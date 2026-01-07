@@ -94,7 +94,6 @@ export async function POST(request) {
       'state',
       'pincode',
       'city',
-      'size',
       'productDetails',
       'price',
     ];

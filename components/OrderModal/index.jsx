@@ -157,12 +157,12 @@ export default function OrderModal({
         return;
       }
 
-      if (!selectedSize) {
-        console.log('No size selected'); // Debug log
-        setError('Please select a size before placing your order.');
-        setIsSubmitting(false);
-        return;
-      }
+      // if (!selectedSize) {
+      //   console.log('No size selected');
+      //   setError('Please select a size before placing your order.');
+      //   setIsSubmitting(false);
+      //   return;
+      // }
 
       console.log('Validation passed, preparing order data'); // Debug log
 
