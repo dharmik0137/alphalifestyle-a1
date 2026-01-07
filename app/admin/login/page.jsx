@@ -20,8 +20,11 @@ export default function AdminLogin() {
   }, [router]);
 
   // Static credentials
-  const ADMIN_EMAIL = 'admin@ecommerce.com';
+  const ADMIN_EMAIL = 'meet15822@gmail.com';
   const ADMIN_PASSWORD = 'Meet@15822';
+
+  const SUB_EMAIL = 'sub15822@gmail.com'
+  const SUB_PASSWORD = 'sub@15822'
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,10 +33,11 @@ export default function AdminLogin() {
 
     // Simulate API call delay
     setTimeout(() => {
-      if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
+      if ((email === ADMIN_EMAIL && password === ADMIN_PASSWORD) || (email === SUB_EMAIL && password === SUB_PASSWORD)) {
         // Store auth in sessionStorage
+        const encodedEmail = btoa(email);
         sessionStorage.setItem('adminAuth', 'true');
-        sessionStorage.setItem('adminEmail', email);
+        sessionStorage.setItem('adminEmail', encodedEmail);
         router.push('/admin');
       } else {
         setError('Invalid email or password');
@@ -66,7 +70,6 @@ export default function AdminLogin() {
               required
               disabled={isLoading}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black disabled:opacity-50 disabled:cursor-not-allowed"
-              placeholder="admin@ecommerce.com"
             />
           </div>
 

@@ -17,6 +17,8 @@ export default function OrderManagement() {
   const [deletingOrderId, setDeletingOrderId] = useState(null);
   const [updatingOrderId, setUpdatingOrderId] = useState(null);
   const [isExporting, setIsExporting] = useState(false);
+  const stored = sessionStorage.getItem("adminEmail");
+  const decodedEmail = stored ? atob(stored) : null;
 
   useEffect(() => {
     fetchOrders();
@@ -74,6 +76,9 @@ export default function OrderManagement() {
   };
 
   const handleDelete = async (orderId) => {
+    if (decodedEmail !== 'meet15822@gmail.com') {
+      return;
+    }
     if (!confirm('Are you sure you want to delete this order?')) {
       return;
     }
@@ -98,6 +103,9 @@ export default function OrderManagement() {
   };
 
   const handleEdit = (order) => {
+    if (decodedEmail !== 'meet15822@gmail.com') {
+      return;
+    }
     setEditingOrder(order._id);
     setEditFormData({
       name: order.name,
@@ -113,6 +121,9 @@ export default function OrderManagement() {
   };
 
   const handleUpdate = async (orderId) => {
+    if (decodedEmail !== 'meet15822@gmail.com') {
+      return;
+    }
     setUpdatingOrderId(orderId);
     try {
       const response = await fetch(`/api/order?id=${orderId}`, {
@@ -143,6 +154,9 @@ export default function OrderManagement() {
   };
 
   const handleExportExcel = () => {
+    if (decodedEmail !== 'meet15822@gmail.com') {
+      return;
+    }
     if (filteredOrders.length === 0) {
       alert('No orders to export');
       return;
